@@ -76,9 +76,7 @@ int main()
         for (int j = 0; j < tamA; j++)
         {
             if(vetB[i] != vetA[j])
-            {
                 numDiferentes++;
-            }
         }
         if(numDiferentes == tamA)
             ehDiferente = true;

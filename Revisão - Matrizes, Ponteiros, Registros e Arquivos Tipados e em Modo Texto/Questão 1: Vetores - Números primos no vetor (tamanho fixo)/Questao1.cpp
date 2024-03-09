@@ -45,7 +45,7 @@ int main()
     for (int i = 0; i < 9; i++)
     {
         int cont = 0;
-        for (int j = 2; j <= vet[i]/2; j++)
+        for (int j = 2; j <= sqrt(vet[i]); j++)
         {
             if (vet[i] % j == 0)
             {
