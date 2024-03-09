@@ -1,8 +1,8 @@
 
 /*
-Faça um programa para receber nove números inteiros positivos, 
-armazená-los em um vetor, calcular e exibir no dispositivo de saída 
-padrão aqueles números que são primos e suas respectivas posições no vetor. 
+Faça um programa para receber nove números inteiros positivos,
+armazená-los em um vetor, calcular e exibir no dispositivo de saída
+padrão aqueles números que são primos e suas respectivas posições no vetor.
 Se nenhum número primo for fornecido, nenhuma mensagem precisará ser exibida.
 
 Entradas:
@@ -11,12 +11,12 @@ Entradas:
 
 Saídas:
 
-    Sequência de números primos e suas respectivas posições (índices no vetor). 
+    Sequência de números primos e suas respectivas posições (índices no vetor).
     Obs.: Aqueles números que forem primos e suas respectivas posições deverão ser exibidos aos pares.
 
 Exemplo de entrada:
 
-7 13 49 23 6 21 78 98 3 
+7 13 49 23 6 21 78 98 3
 
 Exemplo de saída:
 
@@ -38,8 +38,7 @@ int main()
 
     for (int i = 0; i < 9; i++)
     {
-        cin>> vet[i];
-
+        cin >> vet[i];
     }
 
     for (int i = 0; i < 9; i++)

@@ -1,7 +1,7 @@
 /*
 
 Faça um programa que receba oito números inteiros e os armazene de forma ordenada em um vetor.
- Ou seja, assim que lidos, os números já devem ser inseridos no vetor em uma posição que mantém 
+ Ou seja, assim que lidos, os números já devem ser inseridos no vetor em uma posição que mantém
  a ordem crescente. Eles não podem ser inseridos no final do vetor para o vetor passar por uma ordenação.
 
 Cada vez que um número for colocado no vetor o programa deve exibir os números inseridos até então.
@@ -35,14 +35,14 @@ Exemplo de saída:
 
 using namespace std;
 
-void bubbleSort(int vet[], int n) 
-{ 
-    int i, j; 
-    for (i = 0; i < n - 1; i++) 
-        for (j = 0; j < n - i - 1; j++) 
-            if (vet[j] > vet[j + 1]) 
-                swap(vet[j], vet[j + 1]); 
-} 
+void bubbleSort(int vet[], int n)
+{
+    int i, j;
+    for (i = 0; i < n - 1; i++)
+        for (j = 0; j < n - i - 1; j++)
+            if (vet[j] > vet[j + 1])
+                swap(vet[j], vet[j + 1]);
+}
 
 int main()
 {
@@ -50,15 +50,15 @@ int main()
     int contImprime = 0;
     for (int i = 0; i < 8; i++)
     {
-        cin>>vet[i];
+        cin >> vet[i];
         contImprime++;
         bubbleSort(vet, contImprime);
         for (int j = 0; j < contImprime; j++)
         {
-            cout<<vet[j];
+            cout << vet[j];
         }
-        cout<<endl;
+        cout << endl;
     }
-    
+
     return 0;
 }

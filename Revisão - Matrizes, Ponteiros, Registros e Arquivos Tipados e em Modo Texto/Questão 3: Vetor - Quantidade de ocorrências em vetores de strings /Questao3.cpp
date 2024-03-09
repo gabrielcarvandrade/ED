@@ -52,9 +52,9 @@ int main()
 {
     int tamA = 0, tamB = 0, tamC = 0;
     int cont = 0;
-    string* vetA;
-    string* vetB;
-    string* vetC;
+    string *vetA;
+    string *vetB;
+    string *vetC;
 
     cin >> tamA;
     vetA = new string[tamA];

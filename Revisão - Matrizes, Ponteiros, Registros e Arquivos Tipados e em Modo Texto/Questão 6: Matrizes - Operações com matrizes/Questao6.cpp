@@ -1,7 +1,7 @@
 /*
 
-Elabore um programa que preencha uma matriz 10 x 10 com números inteiros, 
-execute cada operação de troca especificada a seguir na matriz original e 
+Elabore um programa que preencha uma matriz 10 x 10 com números inteiros,
+execute cada operação de troca especificada a seguir na matriz original e
 mostre cada matriz resultante. Você vai precisar de ao menos uma matriz extra
 para realizar as operações.
 
@@ -18,7 +18,7 @@ Entrada:
 
 Saída:
 
-    A matriz 10 x 10 resultante das devidas operações descritas em 1, 2, 3, e 4 
+    A matriz 10 x 10 resultante das devidas operações descritas em 1, 2, 3, e 4
     (utilizando um índice numérico antes de exibir cada matriz).
 
 Exemplo de entrada:
@@ -95,13 +95,13 @@ int main()
     int matriz2[tamMatriz][tamMatriz];
     int matriz3[tamMatriz][tamMatriz];
     int matriz4[tamMatriz][tamMatriz];
-    
-    //recebe a informação da matriz inicial e coloca em cada matriz separadamente
+
+    // recebe a informação da matriz inicial e coloca em cada matriz separadamente
     for (int i = 0; i < tamMatriz; i++)
     {
         for (int j = 0; j < tamMatriz; j++)
         {
-            cin>>matrizInicial[i][j];
+            cin >> matrizInicial[i][j];
             matriz1[i][j] = matrizInicial[i][j];
             matriz2[i][j] = matrizInicial[i][j];
             matriz3[i][j] = matrizInicial[i][j];
@@ -109,37 +109,39 @@ int main()
         }
     }
 
-    //operacao para o primeiro caso de matriz (linha 2 x linha 8)
+    // operacao para o primeiro caso de matriz (linha 2 x linha 8)
     for (int i = 0; i < tamMatriz; i++)
     {
         int aux[tamMatriz];
         for (int j = 0; j < tamMatriz; j++)
         {
-            if(i == 1)aux[j] = matriz1[i][j];
-            if(i == 7)
+            if (i == 1)
+                aux[j] = matriz1[i][j];
+            if (i == 7)
             {
                 matriz1[1][j] = matriz1[i][j];
-                matriz1[i][j] = aux[j]; 
+                matriz1[i][j] = aux[j];
             }
-        }  
+        }
     }
 
-    //operacao para o segundo caso de matriz (coluna 4 x coluna 10)
+    // operacao para o segundo caso de matriz (coluna 4 x coluna 10)
     for (int i = 0; i < tamMatriz; i++)
     {
         int aux[tamMatriz];
         for (int j = 0; j < tamMatriz; j++)
         {
-            if(j == 3)aux[i] = matriz2[i][j];
-            if(j == 9)
+            if (j == 3)
+                aux[i] = matriz2[i][j];
+            if (j == 9)
             {
                 matriz2[i][3] = matriz2[i][j];
-                matriz2[i][j] = aux[i]; 
+                matriz2[i][j] = aux[i];
             }
-        }  
+        }
     }
 
-    //operacao para o terceiro caso de matriz (diagonal principal x diagonal secundaria)
+    // operacao para o terceiro caso de matriz (diagonal principal x diagonal secundaria)
     int aux1[tamMatriz];
     int contJ = 9;
     for (int i = 0; i < tamMatriz; i++)
@@ -149,8 +151,8 @@ int main()
         matriz3[i][i] = aux1[i];
         contJ--;
     }
-    
-    //operacao para o quarto caso de matriz (linha 5 x coluna 10)
+
+    // operacao para o quarto caso de matriz (linha 5 x coluna 10)
     int aux2[tamMatriz];
     for (int i = 0; i < tamMatriz; i++)
     {
@@ -161,21 +163,21 @@ int main()
 
     for (int k = 0; k < 4; k++)
     {
-        cout<<k+1<<"."<<endl;
+        cout << k + 1 << "." << endl;
         for (int i = 0; i < tamMatriz; i++)
         {
             for (int j = 0; j < tamMatriz; j++)
             {
-                if(k == 0)
-                cout<<matriz1[i][j]<<" ";
-                if(k == 1)
-                cout<<matriz2[i][j]<<" ";
-                if(k == 2)
-                cout<<matriz3[i][j]<<" ";
-                if(k == 3)
-                cout<<matriz4[i][j]<<" ";
+                if (k == 0)
+                    cout << matriz1[i][j] << " ";
+                if (k == 1)
+                    cout << matriz2[i][j] << " ";
+                if (k == 2)
+                    cout << matriz3[i][j] << " ";
+                if (k == 3)
+                    cout << matriz4[i][j] << " ";
             }
-            cout<<endl;
+            cout << endl;
         }
     }
     return 0;

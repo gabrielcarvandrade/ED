@@ -1,6 +1,6 @@
 /*
 
-Faça um programa que abra um arquivo texto chamado "Meu_Arquivo.txt" e conte o 
+Faça um programa que abra um arquivo texto chamado "Meu_Arquivo.txt" e conte o
 número de caracteres não brancos nele. Escreva o resultado da contagem na saída padrão.
 
 Entrada:
@@ -28,8 +28,8 @@ using namespace std;
 int main()
 {
     string arquivoIn = "Meu_Arquivo.txt";
-    ifstream arquivo(arquivoIn); 
-    if (arquivo.is_open()) 
+    ifstream arquivo(arquivoIn);
+    if (arquivo.is_open())
     {
         int contCaracteres = 0;
         char c;
