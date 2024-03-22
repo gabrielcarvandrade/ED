@@ -41,18 +41,25 @@ using namespace std;
 
 int main()
 {
-    int tamMatriz = 3;
-    int matriz[tamMatriz][tamMatriz];
-    int maior = 0;
-    int menor = 0;
-    int linha = 0;
-    int coluna = 0;
+    int matriz[10][10];
+    int i, j, maior, menor, linha, coluna;
 
-    for (int i = 0; i < tamMatriz; i++)
+    for (i = 0; i < 10; i++)
     {
-        for (int j = 0; j < tamMatriz; j++)
+        for (j = 0; j < 10; j++)
         {
             cin >> matriz[i][j];
+        }
+    }
+
+    maior = matriz[0][0];
+    linha = 0;
+    coluna = 0;
+
+    for (i = 0; i < 10; i++)
+    {
+        for (j = 0; j < 10; j++)
+        {
             if (matriz[i][j] > maior)
             {
                 maior = matriz[i][j];
@@ -63,12 +70,13 @@ int main()
     }
 
     menor = matriz[linha][0];
-    for (int i = 0; i < tamMatriz; i++)
+
+    for (j = 0; j < 10; j++)
     {
-        if (matriz[linha][i] < menor)
+        if (matriz[linha][j] < menor)
         {
-            menor = matriz[linha][i];
-            coluna = i;
+            menor = matriz[linha][j];
+            coluna = j;
         }
     }
 

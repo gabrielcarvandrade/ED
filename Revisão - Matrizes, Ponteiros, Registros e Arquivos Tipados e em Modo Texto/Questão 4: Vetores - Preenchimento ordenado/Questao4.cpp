@@ -35,27 +35,26 @@ Exemplo de saída:
 
 using namespace std;
 
-void bubbleSort(int vet[], int n)
-{
-    int i, j;
-    for (i = 0; i < n - 1; i++)
-        for (j = 0; j < n - i - 1; j++)
-            if (vet[j] > vet[j + 1])
-                swap(vet[j], vet[j + 1]);
-}
-
 int main()
 {
-    int vet[8];
-    int contImprime = 0;
-    for (int i = 0; i < 8; i++)
+    int vetor[8];
+    int i, j, aux;
+
+    for (i = 0; i < 8; i++)
     {
-        cin >> vet[i];
-        contImprime++;
-        bubbleSort(vet, contImprime);
-        for (int j = 0; j < contImprime; j++)
+        cin >> vetor[i];
+        for (j = i; j > 0; j--)
         {
-            cout << vet[j];
+            if (vetor[j] < vetor[j - 1])
+            {
+                aux = vetor[j];
+                vetor[j] = vetor[j - 1];
+                vetor[j - 1] = aux;
+            }
+        }
+        for (j = 0; j <= i; j++)
+        {
+            cout << vetor[j] << " ";
         }
         cout << endl;
     }

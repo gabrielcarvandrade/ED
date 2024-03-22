@@ -1,0 +1,14 @@
+//  metodo para desenfileirar um item da fila
+int desenfileirar()
+        {
+            if (tamanho == 0)
+            {
+                return -1;
+            }
+
+            int valor = itens[inicio].valor;
+            inicio = (inicio + 1) % capacidade;
+            tamanho--;
+
+            return valor;
+        }

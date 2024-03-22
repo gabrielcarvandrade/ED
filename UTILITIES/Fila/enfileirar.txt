@@ -1,0 +1,16 @@
+//método para enfileirar um valor na fila
+
+void enfileirar(int valor)
+        {
+            if (tamanho == 0)
+            {
+                itens[inicio].valor = valor;
+                tamanho++;
+            }
+            else if (tamanho < capacidade)
+            {
+                fim = (fim + 1) % capacidade;
+                itens[fim].valor = valor;
+                tamanho++;
+            }
+        }
