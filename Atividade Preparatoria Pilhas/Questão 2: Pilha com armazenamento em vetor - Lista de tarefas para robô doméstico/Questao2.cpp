@@ -1,14 +1,14 @@
 /*
 
-Implemente uma estrutura de dados pilha, utilizando armazenamento em vetor, para implementar 
-uma lista de tarefas para um robô doméstico. A estrutura deve possibilitar, pelo menos, 
-as seguintes ações: empilhamento e desempilhamento de itens, verificação do item no topo 
-da pilha e limpeza da lista de afazeres (remoção de todos os elementos da pilha). 
-O desempilhamento deve escrever mensagem de erro na saída ("Erro: pilha vazia!"), quando a 
-pilha já estiver vazia. O empilhamento também deve gerar mensagem de erro ("Erro: pilha cheia!"), 
-quanto todas as posições do vetor estiverem ocupadas. Os itens da lista de tarefas possuem 
-os seguintes atributos: nome (uma string sem espaços), tipo (um único caracter) e tempo de 
-execução em minutos (um inteiro). Além disso, sabe-se que esse robô tem capacidade de memória 
+Implemente uma estrutura de dados pilha, utilizando armazenamento em vetor, para implementar
+uma lista de tarefas para um robô doméstico. A estrutura deve possibilitar, pelo menos,
+as seguintes ações: empilhamento e desempilhamento de itens, verificação do item no topo
+da pilha e limpeza da lista de afazeres (remoção de todos os elementos da pilha).
+O desempilhamento deve escrever mensagem de erro na saída ("Erro: pilha vazia!"), quando a
+pilha já estiver vazia. O empilhamento também deve gerar mensagem de erro ("Erro: pilha cheia!"),
+quanto todas as posições do vetor estiverem ocupadas. Os itens da lista de tarefas possuem
+os seguintes atributos: nome (uma string sem espaços), tipo (um único caracter) e tempo de
+execução em minutos (um inteiro). Além disso, sabe-se que esse robô tem capacidade de memória
 limitada para no máximo seis tarefas.
 
 Entradas:
@@ -25,7 +25,7 @@ Antes dos comandos, o programa recebe a capacidade de armazenamento da pilha.
 
 Saídas:
 
-Todas as saídas de comandos já estão implementadas na função principal desse código exemplo fornecido. 
+Todas as saídas de comandos já estão implementadas na função principal desse código exemplo fornecido.
 Ao terminar a execução do programa, todos os itens da pilha são desempilhados e escritos.
 
 Exemplo de Entrada e Saída juntas:
@@ -36,7 +36,7 @@ i sala s 150
 i quarto1 q 45
 i quarto2 q 45
 i quarto3 q 60
-i cozinha c 130	
+i cozinha c 130
 r
 Nome: cozinha Tipo: c Valor: 130
 i cozinha c 145
@@ -54,112 +54,128 @@ Nome: quarto1 Tipo: q Valor: 45
 Nome: sala Tipo: s Valor: 150
 
 */
-
-
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-struct ItemPilha
+struct Item
 {
     string nome;
-    char tipo;
+    string tipo;
     int valor;
-    ItemPilha *proximoItem;
 };
 
-struct Pilha
+class Pilha
 {
-    ItemPilha *topoPilha;
-    int contPilha = 0;
+private:
+    vector<Item> pilha;
+    int tamanho;
 
-    Pilha()
+public:
+    bool vazia()
     {
-        topoPilha = NULL;
+        return pilha.empty();
     }
-    void empilhar(string nome, char tipo, int valor)
+
+    bool cheia(int capacidade)
     {
-        if (contPilha == 6)
-        {
-            cout << "Erro: pilha cheia!" << endl;
-            return;
-        }
-        ItemPilha *novo = new ItemPilha;
-        novo->nome = nome;
-        novo->tipo = tipo;
-        novo->valor = valor;
-        novo->proximoItem = topoPilha;
-        topoPilha = novo;
-        contPilha++;
+        return tamanho == capacidade;
     }
+
+    void empilhar(string nome, string tipo, int valor)
+    {
+        Item novo;
+        novo.nome = nome;
+        novo.tipo = tipo;
+        novo.valor = valor;
+        pilha.push_back(novo);
+        tamanho++;
+    }
+
     void desempilhar()
     {
-        if (topoPilha == NULL)
+        if (vazia())
         {
             cout << "Erro: pilha vazia!" << endl;
-            return;
         }
-        ItemPilha *aux = topoPilha;
-        topoPilha = topoPilha->proximoItem;
-        cout << "Nome: " << aux->nome << " Tipo: " << aux->tipo << " Valor: " << aux->valor << endl;
-        delete aux;
+        else
+        {
+            Item aux = pilha.back();
+            cout << "Nome: " << aux.nome << " Tipo: " << aux.tipo << " Valor: " << aux.valor << endl;
+            pilha.pop_back();
+            tamanho--;
+        }
     }
+
     void limpar()
     {
-        while (topoPilha != NULL)
+        while (!vazia())
         {
             desempilhar();
         }
     }
+
     void espiar()
     {
-        if (topoPilha == NULL)
+        if (vazia())
         {
             cout << "Erro: pilha vazia!" << endl;
-            return;
         }
-        cout << "Nome: " << topoPilha->nome << " Tipo: " << topoPilha->tipo << " Valor: " << topoPilha->valor << endl;
+        else
+        {
+            Item aux = pilha.back();
+            cout << "Nome: " << aux.nome << " Tipo: " << aux.tipo << " Valor: " << aux.valor << endl;
+        }
     }
 };
 
 int main()
 {
     Pilha pilha;
-    string nome;
-    char comando;
-    char tipo;
-    int valor;
-    int contPilha = 1;
+
+    int capacidade;
+    capacidade = 6;
+
+    string comando;
     while (cin >> comando)
     {
-        if (comando == 'i')
+        if (comando == "i")
         {
+            string nome, tipo;
+            int valor;
             cin >> nome >> tipo >> valor;
-            pilha.empilhar(nome, tipo, valor);
-            contPilha++;
+            if (!pilha.cheia(capacidade))
+            {
+                pilha.empilhar(nome, tipo, valor);
+            }
+            else
+            {
+                cout << "Erro: pilha cheia!" << endl;
+            }
         }
-        else if (comando == 'r')
+        else if (comando == "r")
         {
             pilha.desempilhar();
-            contPilha--;
         }
-        else if (comando == 'l')
+        else if (comando == "l")
         {
             pilha.limpar();
         }
-        else if (comando == 'e')
+        else if (comando == "e")
         {
             pilha.espiar();
         }
-        else if (comando == 'f')
+        else if (comando == "f")
         {
-            while (contPilha != 0)
-            {
-                pilha.desempilhar();
-                contPilha--;
-            }
-            return 0;
+            break;
         }
     }
+
+    while (!pilha.vazia())
+    {
+        pilha.desempilhar();
+    }
+
     return 0;
 }
